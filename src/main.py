@@ -41,7 +41,10 @@ def game_loop(display):
             enemy.timer += 1
             if enemy.timer == FPS * 3:
                 enemys.remove(enemy)
-                score -= 1
+                if score > 0:
+                    score -= 1
+
+
 
         mouse_posx, mouse_posy = pygame.mouse.get_pos()
         crosshair.pos_x = mouse_posx
@@ -64,7 +67,7 @@ def draw_display(display, enemys, crosshair, score):
     draw_crosshair(display, crosshair)
 
     # fonts :
-    font = pygame.font.Font('GILSANUB.TTF', 28)
+    font = pygame.font.Font('../assets/GILSANUB.TTF', 28)
     if score > 0:
         color = GREEN
     else:
@@ -78,14 +81,14 @@ def draw_display(display, enemys, crosshair, score):
 
 def draw_enemy(display, enemys):
     for enemy in enemys:
-        enemy_image = pygame.image.load("godfather.png")
+        enemy_image = pygame.image.load("../assets/godfather.png")
         enemy_scaled_image = pygame.transform.scale(enemy_image, (50, 50))
         image_get_rect = enemy_scaled_image.get_rect(center=(enemy.pos_x + enemy.width/2,enemy.pos_y + enemy.height/2))
         display.blit(enemy_scaled_image, image_get_rect)
 
 
 def draw_crosshair(display, crosshair):
-    crosshair_image = pygame.image.load("crosshair.png")
+    crosshair_image = pygame.image.load("../assets/crosshair.png")
     crosshair_image_center = (crosshair.pos_x, crosshair.pos_y)
     scaled_image = pygame.transform.scale(crosshair_image, (50, 50))
     image_get_rect = scaled_image.get_rect(center=crosshair_image_center)
