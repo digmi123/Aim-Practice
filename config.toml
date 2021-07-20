@@ -1,0 +1,10 @@
+[graphics]
+width = 900
+height = 600
+FPS = 60
+gap = 80
+offset = 100
+
+[settings]
+time_to_add_enemy = 0.3
+time_to_remove_enemy = 1.5
